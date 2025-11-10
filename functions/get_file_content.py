@@ -1,5 +1,5 @@
 import os
-from config import MAX_CHARACTERS
+from config import MAX_CHARS
 from google.genai import types
 
 def get_file_content(working_directory, file_path):
@@ -17,10 +17,10 @@ def get_file_content(working_directory, file_path):
     
     try:
         with open(target_abs, "r") as f:
-            file_content_string = f.read(MAX_CHARACTERS)
+            file_content_string = f.read(MAX_CHARS)
             extras = f.read(1)
             if extras:
-                return f'{file_content_string}\n[...File "{file_path}" truncated at {MAX_CHARACTERS} characters]'
+                return f'{file_content_string}\n[...File "{file_path}" truncated at {MAX_CHARS} characters]'
             return file_content_string
     except Exception as e:
         return f"Error: {e}"
